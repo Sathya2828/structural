@@ -1,0 +1,76 @@
+<h1 class="text-center">NgFor</h1>
+<!-- <ul>
+    <li *ngFor="let user of users">
+        {{user}}
+
+    </li>
+</ul> -->
+<table class="table">
+    <tr style="color: rgb(104, 195, 74) ; background-color: beige;">
+        <th>Index</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>City</th>
+    </tr>
+    <tr *ngFor="let user of users ; let i=index" >
+        <td>{{i+1}}</td>
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.city}}</td>
+    </tr>
+</table>
+ 
+
+<hr>
+
+
+ 
+<h1 class="text-center">NgIf Structural Directive</h1>
+<div *ngIf="isUserLoggedIn ;else logout">
+    <h3 class="text-center" style="color: aquamarine ;background: rgb(212, 137, 218);">Welcome to User Profile</h3>
+</div>
+
+<ng-template #logout>
+    <p class="text-center" style="color: rgb(204, 223, 134) ;background: rgb(233, 22, 25);">You r not Logged in </p>
+</ng-template>
+
+<br>
+<hr>
+
+<h1 class="text-center" style="color: aquamarine ;background: orange;">NgSwitch</h1>
+<div class="text-center">
+Select Country:
+<select  (change)="choice($any($event.target).value)">
+    <option value="">Select Country</option>
+    <option  *ngFor="let c of countries" [value]="c.code">{{c.country}}</option>
+    
+</select>
+{{scountry}}
+<div [ngSwitch]="scountry">
+    <div *ngSwitchCase="'ind'" class="jumbotron" style="background:hsl(352, 50%, 45%)">
+        <h1>India Calling Code +91</h1>
+    </div>
+    <div *ngSwitchCase="'uae'" class="jumbotron"style="background:hsl(300, 50%, 45%)">
+        <h1>United Arab Calling Code +380</h1>
+    </div>
+    <div *ngSwitchCase="'uk'" class="jumbotron" style="background:greenyellow">
+        <h1>United Kingdom Calling Code +499</h1>
+    </div>
+    <div *ngSwitchDefault class="jumbotron" style="background:rgb(146, 150, 160)">
+        <h1>Select your Country </h1>
+    </div>
+    <div *ngSwitchCase="'d'" class="jumbotron"style="background:hsl(352, 50%, 45%)">
+        <h1>Calling Code +380</h1>
+</div>
+</div>
+<br><br>
+
+<hr>
+<label for="cars">Choose a car:</label>
+
+<select name="cars" id="cars" class="text-center">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
